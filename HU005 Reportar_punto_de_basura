@@ -1,0 +1,23 @@
+Feature: HU005 - Reportar punto de basura
+  Como ciudadano,
+  Quiero reportar puntos de basura en la vía pública,
+  Para alertar al municipio y contribuir con la limpieza.
+
+  Scenario Outline: Reporte exitoso de punto de basura
+    Given que el <usuario> se encuentra en el mapa principal
+    And tiene la ubicación activa
+    When selecciona "Reportar punto", adjunta una <foto> y <descripcion>
+    Then el sistema guarda el reporte y muestra el marcador en el mapa
+
+    Examples:
+      | usuario | foto         | descripcion                          |
+      | u1      | img001.jpg   | Basura acumulada cerca del parque    |
+
+  Scenario Outline: Reporte fallido por campos vacíos
+    Given que el <usuario> está en el mapa principal
+    When intenta crear un reporte sin llenar la <descripcion>
+    Then el sistema muestra el mensaje "Completa todos los campos."
+
+    Examples:
+      | usuario | descripcion |
+      | u2      |             |
