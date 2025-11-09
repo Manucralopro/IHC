@@ -1,0 +1,22 @@
+Feature: HU020 - Notificación de cierre de reporte
+  Como usuario que envió un reporte,
+  Quiero recibir una notificación cuando sea resuelto,
+  Para saber que fue atendido.
+
+  Scenario Outline: Recibir notificación de cierre
+    Given que el <usuario> tiene un reporte cerrado
+    When inicia sesión en TrashTracker
+    Then aparece el mensaje “Tu reporte ha sido resuelto.”
+
+    Examples:
+      | usuario | id_reporte |
+      | u1      | TR-001     |
+
+  Scenario Outline: Consultar historial de notificaciones
+    Given que el <usuario> está en “Notificaciones”
+    When revisa el historial
+    Then ve la lista con <id_reporte> y estado "Resuelto"
+
+    Examples:
+      | usuario | id_reporte |
+      | u1      | TR-001     |
