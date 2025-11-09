@@ -1,0 +1,22 @@
+Feature: HU050 - Evaluación heurística
+  Como equipo de diseño,
+  Queremos revisar la interfaz de TrashTracker,
+  Para asegurar que cumple las heurísticas de usabilidad.
+
+  Scenario Outline: Aplicar heurísticas de Nielsen
+    Given que el <evaluador> tiene el formato de evaluación
+    When analiza la <pantalla> aplicando la <heuristica>
+    Then registra observaciones en el <formato>
+
+    Examples:
+      | evaluador | pantalla        | heuristica                          |
+      | UX1       | Mapa principal  | Visibilidad del estado del sistema  |
+
+  Scenario Outline: Registrar severidad del problema
+    Given que el <evaluador> detectó un problema de usabilidad
+    When asigna un <nivel_severidad>
+    Then guarda el registro para priorizar mejoras
+
+    Examples:
+      | evaluador | pantalla          | nivel_severidad |
+      | UX1       | Reporte de basura | Alto            |
