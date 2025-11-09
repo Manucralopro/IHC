@@ -1,1 +1,22 @@
+Feature: HU006 - Adjuntar imagen en reporte
+  Como usuario que reporta un punto,
+  Quiero subir una imagen del lugar,
+  Para evidenciar la situación real.
 
+  Scenario Outline: Carga exitosa de imagen
+    Given que el <usuario> está en el formulario de reporte
+    When selecciona una <imagen> desde su galería
+    Then el sistema muestra la vista previa y confirma la carga
+
+    Examples:
+      | usuario | imagen       |
+      | u1      | basura1.jpg  |
+
+  Scenario Outline: Error al subir formato no permitido
+    Given que el <usuario> está en el formulario de reporte
+    When intenta subir una <imagen> en formato no válido
+    Then el sistema muestra "Formato de imagen no permitido."
+
+    Examples:
+      | usuario | imagen        |
+      | u2      | basura1.tiff  |
