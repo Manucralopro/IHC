@@ -1,0 +1,23 @@
+Feature: HU010 - Visualización del mapa principal
+  Como usuario,
+  Quiero ver los reportes activos en el mapa,
+  Para conocer los puntos con incidencias.
+
+  Scenario Outline: Cargar reportes activos
+    Given que el <usuario> ha iniciado sesión
+    When accede al mapa principal
+    Then el sistema muestra los <puntos_activos> en tiempo real
+
+    Examples:
+      | usuario | puntos_activos |
+      | u1      | 15             |
+
+  Scenario Outline: Filtrar reportes por tipo de residuo
+    Given que el <usuario> está en el mapa
+    And hay distintos tipos de residuos
+    When selecciona <tipo_residuo>
+    Then el sistema muestra solo los reportes filtrados
+
+    Examples:
+      | usuario | tipo_residuo  |
+      | u2      | Orgánicos     |
