@@ -1,0 +1,23 @@
+Feature: HU030 - Panel de administrador
+  Como administrador,
+  Quiero revisar los reportes de los usuarios,
+  Para aprobar o rechazar los que correspondan.
+
+  Scenario Outline: Revisión de reportes pendientes
+    Given que el <admin> ha iniciado sesión
+    When entra al módulo “Reportes pendientes”
+    Then ve la lista de <reportes> en espera de revisión
+
+    Examples:
+      | admin | reportes |
+      | adm1  | 8        |
+
+  Scenario Outline: Aprobar reporte
+    Given que el <admin> abre un <id_reporte>
+    When presiona “Aprobar”
+    Then el estado cambia a “Aprobado”
+    And se notifica al usuario creador
+
+    Examples:
+      | admin | id_reporte |
+      | adm1  | TR-002     |
