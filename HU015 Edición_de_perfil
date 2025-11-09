@@ -1,0 +1,22 @@
+Feature: HU015 - Edición de perfil
+  Como usuario registrado,
+  Quiero actualizar mis datos personales,
+  Para mantener mi información actualizada.
+
+  Scenario Outline: Actualizar nombre de usuario
+    Given que el <usuario> está en "Mi perfil"
+    When cambia su <nombre_nuevo>
+    Then el sistema guarda el cambio y muestra “Perfil actualizado.”
+
+    Examples:
+      | usuario | nombre_nuevo   |
+      | u1      | Ana M. Pérez   |
+
+  Scenario Outline: Actualizar imagen de perfil
+    Given que el <usuario> está en “Mi perfil”
+    When cambia su <imagen_perfil>
+    Then el sistema muestra la nueva imagen en toda la app
+
+    Examples:
+      | usuario | imagen_perfil |
+      | u1      | perfil2.jpg   |
