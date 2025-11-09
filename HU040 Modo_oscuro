@@ -1,0 +1,22 @@
+Feature: HU040 - Modo oscuro
+  Como usuario,
+  Quiero activar o desactivar el modo oscuro,
+  Para mejorar la visibilidad según el entorno.
+
+  Scenario Outline: Activar modo oscuro
+    Given que el <usuario> está en “Configuración”
+    When activa el interruptor “Modo oscuro”
+    Then la interfaz cambia a colores oscuros
+
+    Examples:
+      | usuario |
+      | u1      |
+
+  Scenario Outline: Desactivar modo oscuro
+    Given que el <usuario> tiene el modo oscuro activo
+    When desactiva el interruptor
+    Then la aplicación regresa al modo claro
+
+    Examples:
+      | usuario |
+      | u1      |
