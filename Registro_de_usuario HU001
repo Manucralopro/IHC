@@ -1,0 +1,27 @@
+Feature: HU001 - Registro de usuario
+  Como nuevo usuario,
+  Quiero registrarme en la aplicación TrashTracker,
+  Para poder acceder al sistema y reportar puntos de basura.
+
+  Scenario Outline: Registro exitoso de usuario
+    Given que el <usuario> está en la pantalla de registro
+    And no existe una cuenta asociada al <correo>
+    When completa los campos <nombre>, <correo> y <contraseña> válidos
+    And presiona "Crear cuenta"
+    Then el sistema crea la cuenta
+    And muestra el mensaje "Registro exitoso. Bienvenido a TrashTracker."
+
+    Examples:
+      | usuario | nombre     | correo                | contraseña |
+      | u1      | Ana Pérez  | ana.perez@gmail.com   | Trash123   |
+
+  Scenario Outline: Registro fallido por correo ya registrado
+    Given que el <usuario> está en la pantalla de registro
+    And ya existe una cuenta asociada al <correo>
+    When ingresa los datos y presiona "Crear cuenta"
+    Then el sistema no registra la cuenta
+    And muestra el mensaje "El correo ingresado ya está en uso."
+
+    Examples:
+      | usuario | correo                |
+      | u2      | ana.perez@gmail.com   |
