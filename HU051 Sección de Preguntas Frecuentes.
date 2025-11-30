@@ -1,0 +1,25 @@
+Feature: HU051 - Sección de Preguntas Frecuentes
+  Como usuario que tiene dudas sobre el uso de la plataforma,
+  Quiero acceder a una sección de Preguntas Frecuentes,
+  Para resolver mis dudas básicas.
+
+  Scenario Outline: Visualización correcta de la lista de preguntas frecuentes
+    Given que el <usuario> tiene una duda
+    When accede al apartado de ayuda
+    Then el sistema muestra una lista de preguntas frecuentes
+    And las respuestas se organizan por categoría
+
+    Examples:
+      | usuario |
+      | u1      |
+      | u2      |
+
+  Scenario Outline: Adaptación de diseño según el dispositivo
+    Given que el <usuario> accede desde un dispositivo <dispositivo>
+    When abre la sección de ayuda
+    Then el diseño se adapta correctamente al tamaño de pantalla
+
+    Examples:
+      | usuario | dispositivo |
+      | u3      | móvil       |
+      | u4      | web         |
