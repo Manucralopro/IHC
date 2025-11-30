@@ -1,4 +1,4 @@
-Feature: HU010 - Visualización del mapa principal
+Feature: HU011 - Visualización del mapa principal
   Como usuario,
   Quiero ver los reportes activos en el mapa,
   Para conocer los puntos con incidencias.
