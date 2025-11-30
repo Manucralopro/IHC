@@ -1,0 +1,24 @@
+Feature: HU050 - Interacción con asistente virtual
+  Como usuario,
+  Quiero poder charlar con un asistente virtual,
+  Para resolver mis dudas frecuentes y recibir orientación inmediata en la plataforma.
+
+  Scenario Outline: Respuesta automática según intención detectada
+    Given que el asistente identifica la intención del usuario
+    When recibe el mensaje
+    Then debe mostrar la respuesta predefinida asociada en el chat
+
+    Examples:
+      | caso |
+      | c1   |
+      | c2   |
+
+  Scenario Outline: Prevención de envío sin contenido
+    Given que el campo de texto está vacío
+    When el usuario presiona el botón de enviar
+    Then el sistema no debe procesar ni enviar ningún mensaje
+
+    Examples:
+      | caso |
+      | c3   |
+      | c4   |
