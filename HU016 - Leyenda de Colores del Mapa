@@ -1,0 +1,26 @@
+Feature: HU016 - Leyenda de Colores del Mapa
+  Como usuario,
+  Quiero ver una leyenda de colores en el mapa,
+  Para identificar fácilmente el estado de los puntos (activo, en proceso, resuelto).
+
+  Scenario Outline: Visualización de la leyenda cuando el mapa está cargado
+    Given que el mapa está cargado
+    When se muestran los puntos del mapa
+    Then el sistema muestra la leyenda visible con los colores y significados correspondientes
+
+    Examples:
+      | caso |
+      | c1   |
+      | c2   |
+
+  Scenario Outline: Mantener la leyenda visible tras actualizar el diseño
+    Given que se actualiza el diseño del mapa
+    When se recarga la interfaz
+    Then la leyenda debe mantenerse visible
+    And la información debe mostrarse actualizada
+
+    Examples:
+      | caso |
+      | c3   |
+      | c4   |
+      
