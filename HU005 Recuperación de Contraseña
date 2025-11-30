@@ -1,0 +1,24 @@
+Feature: HU005 - Recuperación de Contraseña
+  Como usuario,
+  Quiero recuperar mi contraseña mediante un enlace enviado a mi correo registrado,
+  Para restablecer mi acceso a la aplicación.
+
+  Scenario Outline: Envío de enlace de restablecimiento a correo válido
+    Given que el usuario solicita recuperar su contraseña
+    When introduce su correo registrado "<correo>"
+    Then el sistema debe enviar un enlace de restablecimiento
+
+    Examples:
+      | caso | correo                 |
+      | c1   | usuario1@gmail.com     |
+      | c2   | ejemplo.registrado@upc.edu.pe |
+
+  Scenario Outline: Error al ingresar un correo no registrado
+    Given que el usuario introduce un correo no registrado "<correo>"
+    When intente recuperar su contraseña
+    Then el sistema debe mostrar un mensaje de error indicando que el correo no existe
+
+    Examples:
+      | caso | correo                   |
+      | c3   | noexiste123@gmail.com    |
+      | c4   | correo.falso@dominio.com |
