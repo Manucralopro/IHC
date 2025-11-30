@@ -1,0 +1,25 @@
+Feature: HU017 - Zoom y Navegación del Mapa
+  Como usuario,
+  Quiero acercar o alejar el mapa y desplazarme por diferentes zonas,
+  Para explorar los focos de contaminación en otras áreas de la ciudad.
+
+  Scenario Outline: Ajuste de zoom mediante controles
+    Given que el usuario usa los controles de zoom
+    When los presiona
+    Then el mapa debe ajustarse al nivel correspondiente
+
+    Examples:
+      | caso |
+      | c1   |
+      | c2   |
+
+  Scenario Outline: Desplazamiento del mapa por arrastre
+    Given que el usuario arrastra el mapa
+    When se suelta
+    Then el sistema debe mantener la posición seleccionada
+
+    Examples:
+      | caso |
+      | c3   |
+      | c4   |
+
